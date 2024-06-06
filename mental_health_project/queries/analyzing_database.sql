@@ -34,6 +34,14 @@ SELECT
 FROM student_mental_health_data
 WHERE panic_attack=1
 GROUP BY panic_attack;
+    
+-- specialist treatment distribution
+SELECT 
+	seen_specialist_for_treatment,
+    COUNT(*) numOfStudents
+FROM student_mental_health_data
+WHERE seen_specialist_for_treatment=1
+GROUP BY seen_specialist_for_treatment;
 	
 -- correlation between depression, anxiety, panic_attack
 SELECT 
@@ -50,8 +58,9 @@ ORDER BY numOfStudents DESC;
 SELECT 
 	depression,
     seen_specialist_for_treatment,
-    COUNT(*) numOfStudents
+    COUNT(*) AS numOfStudents
 FROM student_mental_health_data
+WHERE depression=1
 GROUP BY depression, seen_specialist_for_treatment;
 
 -- number of men and women
@@ -69,6 +78,15 @@ SELECT
     COUNT(*) numOfStudents
 FROM student_mental_health_data
 GROUP BY gender, depression, seen_specialist_for_treatment;
+
+-- gender and depression
+SELECT 
+	gender,
+	depression,
+    COUNT(*) numOfStudents
+FROM student_mental_health_data
+WHERE depression=1
+GROUP BY gender, depression;
 
 -- gender, anxiety and panic attack distrbution
 SELECT 
