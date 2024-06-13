@@ -107,7 +107,7 @@ SELECT
 FROM student_mental_health_data
 WHERE depression=1 || anxiety=1 || panic_attack=1
 GROUP BY age, anxiety, panic_attack
-ORDER BY age DESC;
+ORDER BY numOfStudents DESC;
 
 -- major and mental health issues distribution
 SELECT 
@@ -151,3 +151,12 @@ FROM student_mental_health_data
 WHERE seen_specialist_for_treatment=1
 GROUP BY age, seen_specialist_for_treatment
 ORDER BY age;
+
+-- fix error
+UPDATE student_mental_health_data
+SET cgpa = TRIM(cgpa)
+WHERE id=7;
+
+
+UPDATE student_mental_health_data
+SET major = TRIM(major);
